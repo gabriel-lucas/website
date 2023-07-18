@@ -1,4 +1,6 @@
 <script>
+    import App from '$lib/components/App.svelte'
+
     export let data;
     const htmlText = data.html;
     //htmlText.replace(/href=\"\//g, "href=\"wikipedia.org/");
@@ -13,6 +15,25 @@
 </script>
 
 <!--{html}-->
-{html}
-<h1>Render page</h1>
+
 {@html html}
+
+<div>
+ <App/>
+</div>
+  
+  <style>
+    :global(body) {
+      margin: 0;
+    }
+  
+    div {
+      position: absolute;
+      top: 347px;
+      left: 1220px;
+      width: 220px;
+      height: 167px;
+      background: rgb(255, 255, 255);
+      background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(219, 241, 243) 100%);
+    }
+  </style>
