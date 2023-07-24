@@ -1,12 +1,11 @@
 <script>
-    import { base } from '$app/paths';
     //export let data;
 </script>
 
 <nav>
-    <a href="{base}/">Home</a>
-    <a href="{base}/usecases">Usecases</a>
-    <a href="{base}/examples">Examples</a>
+    <a href="/">Home</a>
+    <a href="/usecases">Usecases</a>
+    <a href="/examples">Examples</a>
 </nav>
 
 <slot />
