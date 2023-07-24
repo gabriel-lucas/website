@@ -15,6 +15,8 @@ Core contributors requested this feature in the [2015 Community Wishlist Survey]
 
 The [3D extension](https://www.mediawiki.org/wiki/Extension:3D) was created and the [task marked as done](https://phabricator.wikimedia.org/T3790) allowing to upload 3d models in STL fileformat.
 
+There are around [4000 uploaded 3d models](https://commons.wikimedia.org/w/index.php?search=application%2FSLA&title=Special:MediaSearch&go=Go&type=other&filemime=sla) (.stl application/SLA) in Wikimedia Commons today (24/7/2023)
+
 3D support is not present in the [2023 Community Wishlist Survey](https://meta.wikimedia.org/wiki/Community_Wishlist_Survey_2023/Results
 )
 
