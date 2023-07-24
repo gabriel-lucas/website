@@ -1,43 +1,58 @@
 <script>
-  import { T, useFrame} from '@threlte/core'
-  import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-  import { useLoader } from '@threlte/core'
-  import { spring } from 'svelte/motion'
+  import { T, useFrame} from '@threlte/core';
+  import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+  import { useLoader } from '@threlte/core';
+  import { spring } from 'svelte/motion';
+  import { interactivity, OrbitControls } from '@threlte/extras';
 
+  export let model;
 
-  import { interactivity } from '@threlte/extras'
+  console.log("Modelo:", model)
+  
+  const gltf = useLoader(GLTFLoader).load(model);
+  
+  // This generates problems.
+ /*  if (draco){
+    console.log("Draco: ", model);
+    const { gltf } = useGltf(model, {
+      useDraco: draco
+    })
+  } */
 
-
-  const gltf = useLoader(GLTFLoader).load('/modelos/triceratops.glb');
-  interactivity()
+  /* interactivity()
   const scale = spring(2)
   let rotation = 0
   useFrame((state, delta) => {
     rotation += delta
-  })
+  }) */
 </script>
 
+
+<!-- {#if $gltf}
+  <T is={$gltf.nodes['node-name']} />
+{/if} -->
+
+
 {#if $gltf}
-<T.PerspectiveCamera
-  makeDefault
-  position={[3, 3, 3]}
-  on:create={({ ref }) => {
-    ref.lookAt(0, 1, 0)
-  }}
-/>
+  <T.PerspectiveCamera
+    makeDefault
+    position={[3, 3, 3]}
+    on:create={({ ref }) => {
+      ref.lookAt(0, 1, 0)
+    }}   
+  > 
+  <OrbitControls />
+  </T.PerspectiveCamera>
 
-<T.DirectionalLight position={[0, 10, 10]} castShadow />
 
-  <T is={$gltf.scene} 
-  rotation.y={rotation}
-  position.y={1}
-  scale={$scale}
-  on:pointerenter={() => scale.set(1.5)}
-  on:pointerleave={() => scale.set(1)}
-  castShadow
-  />
-
-  
+  <T.DirectionalLight position={[0, 10, 10]} castShadow />
+    <T is={$gltf.scene} 
+    
+    position.y={1}
+    
+   
+    castShadow
+    />  
 {/if}
 
 
