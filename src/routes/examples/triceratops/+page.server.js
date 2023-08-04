@@ -1,8 +1,12 @@
-export async function load({fetch }) {
-    const response = await fetch(`https://en.wikipedia.org/wiki/Triceratops`);
-    //const response = await fetch(`https://en.wikipedia.org/wiki/${page.params.slug}`);
-    const html = await response.text();
+import axios from 'axios';
+
+
+export async function load({params, fetch }) {
+    // Realizar la petición.
+    const response = await axios.get('https://en.wikipedia.org/wiki/Triceratops');
+    var html = response.data;
+    //console.log("HTML ", html);
     return {
-      html
+        html
     };
-}
+ }

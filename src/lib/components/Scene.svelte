@@ -47,10 +47,7 @@
 
   <T.DirectionalLight position={[0, 10, 10]} castShadow />
     <T is={$gltf.scene} 
-    
     position.y={1}
-    
-   
     castShadow
     />  
 {/if}
