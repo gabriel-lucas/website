@@ -19,7 +19,7 @@
           console.log("Size ", width, " ", height)
       });
       // Replace image content with the component code, but code does not get interpreted by Sveltekit
-      images.html('<App model=\'wikipedia.glb\'/>');
+      //images.html('<App model=\'wikipedia.glb\'/>');
       html = $.html();
 	  });
 </script>

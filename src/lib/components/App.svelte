@@ -3,11 +3,9 @@
   import Scene from './Scene.svelte'
 
   export let model = "/modelos/wikipedia.glb";
-
+  export let size={width: 100, height:100}
 </script>
 
-<Canvas>
+<Canvas size={size}>
   <Scene model = {model}/>
 </Canvas>
-
-
