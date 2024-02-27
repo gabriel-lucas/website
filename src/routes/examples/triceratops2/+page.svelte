@@ -3,16 +3,19 @@
     import App from '$lib/components/App.svelte'
   
     export let data;
-  
-    $: html = data.html.replaceAll('/w/load.php?', 'https://wikipedia.org/w/load.php?')
+
+    $: html = data.fullHtml.replaceAll('/w/load.php?', 'https://wikipedia.org/w/load.php?')
                        .replaceAll('/static', 'https://wikipedia.org/static');
-  
+    
+    let replaced = false; // Add this line
+
     function processNode(node) {
-      if (isTag(node) && node.attribs.class?.split(/\s/).includes('mw-default-size')) {
+      if (!replaced && isTag(node) && node.attribs.class?.split(/\s/).includes('mw-default-size')) {
         const img = node.children?.[0]?.children?.[0];
         if (img) {
+          replaced = true; // Add this line
           //console.log('img', img);
-          console.log("WIDTH: ",img.attribs.width, " HEIGHT: ",img.attribs.height)
+          console.log("SRC", img.attribs.src, "WIDTH: ",img.attribs.width, " HEIGHT: ",img.attribs.height)
            return {
             component: App,
             noChildren: true,
@@ -25,5 +28,6 @@
       }
     }
   </script>
-  
+  {#if html}
   <Html {html} {processNode} />
+  {/if}
